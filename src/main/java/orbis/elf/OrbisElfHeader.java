@@ -62,6 +62,8 @@ public class OrbisElfHeader extends ElfHeader {
 			invoke("parseGNU_d");
 			invoke("parseGNU_r");
 		} else {
+			invoke("parseStringTables");
+			invoke("parseSymbolTables");
 			parseDynamicTable();
 		}
 	}
@@ -334,7 +336,8 @@ public class OrbisElfHeader extends ElfHeader {
 			return;
 		}
 		if (!dynamicTable.containsDynamicValue(DT_SCE_STRSZ)) {
-			invoke("parseStringTables");
+			// TODO: does this work?
+			// invoke("parseStringTables");
 			return;
 		}
 
